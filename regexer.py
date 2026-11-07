@@ -11,7 +11,8 @@ import sys
 
 from PySide6.QtCore import Qt, QTimer
 from PySide6.QtGui import (QColor, QFont, QTextCharFormat, QTextCursor,
-                           QSyntaxHighlighter)
+                           QSyntaxHighlighter, QIcon, QPixmap, QPainter,
+                           QPen)
 from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget,
                                QVBoxLayout, QHBoxLayout, QLineEdit,
                                QPlainTextEdit, QTableWidget, QTableWidgetItem,
@@ -65,10 +66,25 @@ class HiLite(QSyntaxHighlighter):
                 self.setFormat(s, e - s, f)
 
 
+def mk_icon():
+    px = QPixmap(32, 32)
+    px.fill(Qt.transparent)
+    p = QPainter(px)
+    p.setRenderHint(QPainter.Antialiasing)
+    p.setPen(QPen(QColor("#e8763e"), 3))
+    p.setBrush(Qt.NoBrush)
+    p.drawEllipse(4, 4, 16, 16)
+    p.setPen(QPen(QColor("#ddd"), 3))
+    p.drawLine(19, 19, 28, 28)
+    p.end()
+    return QIcon(px)
+
+
 class Win(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("regexer")
+        self.setWindowIcon(mk_icon())
         self.resize(980, 700)
 
         top = QWidget()
