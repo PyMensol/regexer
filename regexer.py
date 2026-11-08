@@ -1,11 +1,3 @@
-"""regexer - a live regex tester.
-
-type a pattern, matches light up in the sample text, groups get listed,
-tokens get explained. runs on plain Qt, no web stuff.
-
-run: py -3.14 regexer.py
-"""
-
 import re
 import sys
 
