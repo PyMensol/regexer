@@ -245,17 +245,16 @@ def launch():
     app.setStyle("Fusion")
     app.setStyleSheet("""
         QMainWindow, QWidget { background: %s; color: %s; }
+        QStatusBar { background: #3d3d3d; color: %s; }
+        QSplitter::handle { background: #2a2a2a; }
         QLineEdit, QPlainTextEdit, QTableWidget {
-            background: %s; color: %s; border: 1px solid #222;
-            selection-background-color: #5a6b7d; }
+            background: %s; color: %s; border: 1px solid #3a3a3a;
+            selection-background-color: #3e5c76; }
+        QTableWidget { gridline-color: #383838; }
         QHeaderView::section { background: %s; color: %s;
             border: 0; padding: 4px; }
-        QCheckBox { color: %s; }
-        QLabel { color: %s; }
-        QStatusBar { background: #007acc; color: #fff; }
-        QSplitter::handle { background: #222; }
-        QTableWidget { gridline-color: #333; }
-    """ % (PANEL, TXT, BG, TXT, PANEL, TXT, TXT, TXT))
+        QCheckBox, QLabel { color: %s; }
+    """ % (PANEL, TXT, TXT, BG, TXT, PANEL, TXT, TXT))
     w = Win()
     w.show()
     if "--shot" in sys.argv:
